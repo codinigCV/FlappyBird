@@ -80,16 +80,16 @@ public class GamebackGround {
                 g.setColor(BK_Color1);
                 break;
             case 2:
-                g.setColor(BK_Color1);
+                g.setColor(BK_Color2);
                 break;
             case 3:
-                g.setColor(BK_Color1);
+                g.setColor(BK_Color3);
                 break;
             case 4:
-                g.setColor(BK_Color1);
+                g.setColor(BK_Color4);
                 break;
             case 5:
-                g.setColor(BK_Color1);
+                g.setColor(BK_Color5);
                 break;
         }
         //g.setColor(new Color(r.nextInt(10),r.nextInt(240,250),r.nextInt(240,250)));

@@ -13,7 +13,7 @@ public class GameSettings {
     JFrame CR;
     JFrame BR;
     int Speed=0;
-    int color=1;
+    int color=4;
     int BCount=0;
 
     public static void main(String[] args) {
