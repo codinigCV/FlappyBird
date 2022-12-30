@@ -10,6 +10,7 @@ public class Constant {
     public static final String FRAM_TITLE_EASY="飞翔的小鸟——>模式：无敌（不做记录）";
     public static final String FRAM_TITLE_NORMAL="飞翔的小鸟——>模式：普通";
     public static final String FRAM_TITLE_HARD="飞翔的小鸟——>模式：困难";
+    public static final String FRAM_TITLE_Alter="飞翔的小鸟——>模式：自定义";
     //窗口的初始化位置
         public static final int FRAM_X=200;
         public static final int FRAM_Y=200;

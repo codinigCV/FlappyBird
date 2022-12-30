@@ -7,7 +7,7 @@ public class GameFactory {      //簡單的工場模式
     void creatGameFrame(int level){
         switch (level){
             case 0:
-                new GameFrameEasy();
+                new GameFrameEasy();          //先改一下
                 break;
             case 1:
                 new GameFrame2();

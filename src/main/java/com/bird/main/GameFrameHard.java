@@ -37,7 +37,9 @@ public class GameFrameHard extends Frame {
                 new LastFifthRecord();
             }
         });
+        item2=new MenuItem("GameSettings");   //游戏设置
         menu.add(item1);
+        menu.add(item2) ;
         menu.addSeparator();
         menu.add(subMenu);
         /*
@@ -45,6 +47,7 @@ public class GameFrameHard extends Frame {
         MenuItem easy = new MenuItem("easy");
         MenuItem normal = new MenuItem("normal");
         MenuItem hard = new MenuItem("hard");
+
         easy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,6 +66,13 @@ public class GameFrameHard extends Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GameFactory().creatGameFrame(2);
+                dispose();
+            }
+        });
+        item2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GameSettings().initGameSettings();
                 dispose();
             }
         });

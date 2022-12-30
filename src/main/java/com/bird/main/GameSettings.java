@@ -15,6 +15,15 @@ public class GameSettings {
     int Speed=0;
     int color=1;
     int BCount=0;
+
+    public static void main(String[] args) {
+        GameSettings gameSettings=new GameSettings();
+        ArrayList<Integer> integers = gameSettings.initGameSettings();
+ /*       for (Integer integer : integers) {
+            System.out.println(integer);
+            System.out.println("----------");
+        }*/
+    }
     public ArrayList<Integer> initGameSettings(){
         ArrayList<Integer> settings=new ArrayList<>();
 /*        int Speed=0;
@@ -28,6 +37,7 @@ public class GameSettings {
         JButton j1=new JButton("Speed");
         JButton j2=new JButton("Color");
         JButton j3=new JButton("Barrier");
+        JButton j4=new JButton("StartGame");
         label.setFont(new Font("Serief",Font.BOLD+Font.ITALIC,20));
         j1.setFont(new Font("Serief",Font.BOLD+Font.ITALIC,20));
         j2.setFont(new Font("Serief",Font.BOLD+Font.ITALIC,20));
@@ -36,34 +46,53 @@ public class GameSettings {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Speed=initSpeed();
+                System.out.println(Speed);
             }
         });
         j2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 color=initColor();
+                System.out.println(color);
             }
         });
         j3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                BCount= initBarrier();
+                System.out.println(BCount);
             }
         });
+        j4.addActionListener(new ActionListener() {    //开启新窗口
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GameFrameAlter2(Speed,color,BCount);
+            }
+        });
+
+
+
         GS.getContentPane().setBackground(new Color(0x4b4cf));
         GS.setLayout(null);
         label.setBounds(200,30,200,100);
         j1.setBounds(200,130,200,100);
         j2.setBounds(200,240,200,100);
         j3.setBounds(200,350,200,100);
+        j4.setBounds(410,350,150,80);
         GS.add(label);
         GS.add(j1);
         GS.add(j2);
         GS.add(j3);
+        GS.add(j4) ;
         GS.setVisible(true);
         settings.add(Speed);
         settings.add(color);
         settings.add(BCount);
+        //settings.g
+        for (Integer setting : settings) {
+            System.out.println(setting);
+            System.out.println("\\\\");
+        }
         return settings;
     }
 
@@ -81,27 +110,6 @@ public class GameSettings {
         j1.setFont(new Font("Serief",Font.BOLD+Font.ITALIC,20));
         j2.setFont(new Font("Serief",Font.BOLD+Font.ITALIC,20));
         j3.setFont(new Font("Serief",Font.BOLD+Font.ITALIC,20));
-        j1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Speed=0;
-
-            }
-        });
-        j2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Speed=1;
-
-            }
-        });
-        j3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Speed=2;
-
-            }
-        });
         SP.getContentPane().setBackground(new Color(0x4b4cf));
         SP.setLayout(null);
         label.setBounds(200,30,200,100);
@@ -114,6 +122,28 @@ public class GameSettings {
         SP.add(j2);
         SP.add(j3);
         SP.setVisible(true);
+        j1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Speed=0;
+                SP.dispose();
+            }
+        });
+        j2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Speed=1;
+                SP.dispose();
+            }
+        });
+        j3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Speed=2;
+               SP.dispose();
+            }
+        });
+
         return Speed;
     }
     public int initColor(){
@@ -133,30 +163,35 @@ public class GameSettings {
             @Override
             public void actionPerformed(ActionEvent e) {
                 color=1;
+                CR.dispose();
             }
         });
         j2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 color=2;
+                CR.dispose();
             }
         });
         j3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 color=3;
+                CR.dispose();
             }
         });
         j4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 color=4;
+                CR.dispose();
             }
         });
         j5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 color=5;
+                CR.dispose();
             }
         });
         label.setBounds(200,10,150,50);
@@ -193,12 +228,14 @@ public class GameSettings {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BCount=0;
+                BR.dispose();
             }
         });
         j2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BCount=1;
+                BR.dispose();
             }
         });
         label.setBounds(200,30,200,100);

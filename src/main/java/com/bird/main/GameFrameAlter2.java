@@ -4,29 +4,47 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import static com.bird.util.Constant.*;
 
-public class GameFrameEasy extends Frame {
-    //示例化参数gamebackground类
+public class GameFrameAlter2 extends Frame {
     private GamebackGround gamebackGround;
     //实例化Bird类
     private Bird bird;
-    //实例化GameBarrierLayerEasy类
-    private GameBarrierLayerEasy gameBarrierLayerEasy;
-       //示例化GameFrontGround类
+    //实例化GameBarrierLayerAlter类
+    private GameBarrierLayerAlter gameBarrierLayerAlter;
+    //示例化GameFrontGround类
     private  GameFrontGround gameFrontGround;
     //存放图片的图片
     private BufferedImage buffimg=new BufferedImage(FRAM_WIDTH,FRAM_HEIGHTH,BufferedImage.TYPE_4BYTE_ABGR);
-   public JFrame GS;//GameSettings
-   public JFrame SP;//speed
-   public JFrame BR;//Barrier
-   public JFrame CR;//Color
+    public JFrame GS;//GameSettings
+    public JFrame SP;//speed
+    public JFrame BR;//Barrier
+    public JFrame CR;//Color
     public int Speed=0;
-    public int color;
+    public int color=4;
 
+    public void setSpeed(int speed) {
+        Speed = speed;
+    }
 
-    public GameFrameEasy()  {   //构造器
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public void setBCount(int BCount) {
+        this.BCount = BCount;
+    }
+
+    public int BCount=0;//障碍物数量
+    public GameSettings gameSettings;
+    public ArrayList<Integer> settings;  //speed,color,Bcount
+
+    public GameFrameAlter2(int speed,int color,int BCount){   //构造器
+        setSpeed(speed);
+        setColor(color);
+        setBCount(BCount);
         //设置 菜单栏
         MenuBar menubar;
         Menu menu, subMenu;
@@ -84,13 +102,15 @@ public class GameFrameEasy extends Frame {
         setMenuBar(menubar);
 
         //添加GameSettings的触发器
-         item2.addActionListener(new ActionListener() {
-             @Override
-             public void actionPerformed(ActionEvent e) {
-                new GameSettings().initGameSettings();
-                 dispose();
-             }
-         });
+        item2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameSettings=new GameSettings();
+                settings= gameSettings.initGameSettings();
+                //initGameSettings();
+                //dispose();
+            }
+        });
 
 
         //窗口是否可见
@@ -98,7 +118,7 @@ public class GameFrameEasy extends Frame {
         //窗口大小
         setSize(FRAM_WIDTH, FRAM_HEIGHTH);
         //窗口标题
-        setTitle(FRAM_TITLE_EASY);
+        setTitle(FRAM_TITLE_Alter);
         //窗口的初始化位置
         setLocation(FRAM_X,FRAM_Y);
         //窗口的大小不可改变
@@ -125,48 +145,52 @@ public class GameFrameEasy extends Frame {
                 minu(e);
             }
         });
+
     }
-    
+
     //游戏中对象初始化
     public void initGame(){
         gamebackGround=new GamebackGround();
         bird=new Bird();
         gameFrontGround=new GameFrontGround();
-        gameBarrierLayerEasy=new GameBarrierLayerEasy();
+        gameBarrierLayerAlter=new GameBarrierLayerAlter();
     }
-    //  
+    //
     class run extends Thread{
-       @Override
-      public void  run(){
+        @Override
+        public void  run(){
 
-           while (true) {
-               repaint(); 
-               try {
-                   Thread.sleep(33);
-               } catch (InterruptedException e) {
-                   e.printStackTrace();
-               }
-           }
-       }
+            while (true) {
+                repaint();
+                try {
+                    Thread.sleep(33);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @Override
     public void update(Graphics g) {
+ /*       setSpeed(settings.get(0));    //更改speed
+        setColor(settings.get(1));
+        setBCount(settings.get(2));*/
         if (bird.life==true){
             //得到图片的画笔
             Graphics graphics = buffimg.getGraphics();
-            gamebackGround.draw(graphics);
+            gamebackGround.drawAlter(graphics,color);
             switch (Speed){ //更改小鸟速度
                 case 0:bird.drawSlow(graphics);
-                break;
+                    break;
                 case 1:bird.draw(graphics);
-                break;
+                    break;
                 case 2:bird.drawSpeed(graphics);
             }
-           // bird.draw(graphics);
+            // bird.draw(graphics);
             gameFrontGround.draw(graphics);
-            gameBarrierLayerEasy.draw(graphics,bird);
-            //一次性将图片绘制到屏幕中
+            gameBarrierLayerAlter.draw(graphics,bird,BCount);
+            //一次性将图片绘制到屏幕中       
             g.drawImage(buffimg,0,0,null);
 
         }else {
@@ -174,14 +198,14 @@ public class GameFrameEasy extends Frame {
             g.setColor(Color.red);
             g.setFont(new Font("微软雅黑",1,60));
             g.drawString(over,300,250);
-              //differ与数据库中的第五名进行比较的逻辑，if>第五名则需要弹出一个窗口进行名称输入，并将名称和记录储存到数据库中，然后点击菜单栏可显示前五名的记录和名称
+            //differ与数据库中的第五名进行比较的逻辑，if>第五名则需要弹出一个窗口进行名称输入，并将名称和记录储存到数据库中，然后点击菜单栏可显示前五名的记录和名称
             String reset="Space Reset Game" ;
             g.drawString(   reset,25,350);
         }
 
     }
     //按键
-    public void add(KeyEvent e){                
+    public void add(KeyEvent e){
         switch (e.getKeyCode()){
             case KeyEvent.VK_UP:
                 bird.fly(1);
@@ -193,7 +217,7 @@ public class GameFrameEasy extends Frame {
                 break;
         }
     }
-    
+
     //抬键
     public void minu(KeyEvent e){
         switch (e.getKeyCode()){
@@ -205,12 +229,12 @@ public class GameFrameEasy extends Frame {
 
     /*重置游戏*/
     public void restart(){
-        gameBarrierLayerEasy.restant();
+        gameBarrierLayerAlter.restant();
         bird.restartDraw();
     }
     //初始化GameSettings
-    public void initGameSettings(){
-         GS=new JFrame("Settings");
+  /*  public void initGameSettings(){
+        GS=new JFrame("Settings");
         GS.setSize(600,500);
         GS.setLocation(200,200);
         GS.setResizable(false);
@@ -269,8 +293,8 @@ public class GameFrameEasy extends Frame {
         j1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              Speed=0;
-              dispose();
+                Speed=0;
+                dispose();
             }
         });
         j2.addActionListener(new ActionListener() {
@@ -374,6 +398,18 @@ public class GameFrameEasy extends Frame {
         //   j3.setFont(new Font("Serief",Font.BOLD+Font.ITALIC,20));
         BR.getContentPane().setBackground(new Color(0x4b4cf));
         BR.setLayout(null);
+        j1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BCount=0;
+            }
+        });
+        j2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BCount=1;
+            }
+        });
         label.setBounds(200,30,200,100);
         j1.setBounds(200,130,200,100);
         j2.setBounds(200,240,200,100);
@@ -384,5 +420,5 @@ public class GameFrameEasy extends Frame {
         BR.add(j2);
         // f.add(j3);
         BR.setVisible(true);
-    }
+    }*/
 }

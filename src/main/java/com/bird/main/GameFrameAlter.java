@@ -94,7 +94,7 @@ public class GameFrameAlter extends Frame {
                  gameSettings=new GameSettings();
                 settings= gameSettings.initGameSettings();
                 //initGameSettings();
-                dispose();
+                //dispose();
             }
         });
 
@@ -215,7 +215,7 @@ public class GameFrameAlter extends Frame {
         bird.restartDraw();
     }
     //初始化GameSettings
-    public void initGameSettings(){
+  /*  public void initGameSettings(){
         GS=new JFrame("Settings");
         GS.setSize(600,500);
         GS.setLocation(200,200);
@@ -402,5 +402,5 @@ public class GameFrameAlter extends Frame {
         BR.add(j2);
         // f.add(j3);
         BR.setVisible(true);
-    }
+    }*/
 }

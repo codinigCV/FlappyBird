@@ -10,7 +10,7 @@ import java.util.Random;
 
 /*
  *游戏障碍物层*/
-public class   GameBarrierLayerAlter {
+public class GameBarrierLayerAlter {
     private GameTime gameTime;
     private int txt;
     private Random random=new Random();
@@ -39,7 +39,7 @@ public class   GameBarrierLayerAlter {
 
         }
         collideBird(bird) ;
-        switch (BCount){     //障碍物数量选择
+        switch (BCount){     //障碍物选择
             case 0:
                 logicmid(g);
                 break;

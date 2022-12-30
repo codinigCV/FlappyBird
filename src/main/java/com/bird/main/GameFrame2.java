@@ -35,7 +35,9 @@ public class GameFrame2 extends Frame {
                 new LastFifthRecord();
             }
         });
+        item2=new MenuItem("GameSettings");   //游戏设置
         menu.add(item1);
+        menu.add(item2);
         menu.addSeparator();
         menu.add(subMenu);
         /*
@@ -61,6 +63,13 @@ public class GameFrame2 extends Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GameFactory().creatGameFrame(2);
+                dispose();
+            }
+        });
+        item2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GameSettings().initGameSettings();
                 dispose();
             }
         });
