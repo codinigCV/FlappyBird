@@ -36,7 +36,7 @@ public class GameFrameAlter extends Frame {
         Menu menu, subMenu;
         MenuItem item1, item2;
         menubar=new MenuBar();
-        menu=new Menu("MainMENU12");
+        menu=new Menu("MainMENU123");
         /*
          *  一级菜单*/
         subMenu =new Menu("changeLevel");
