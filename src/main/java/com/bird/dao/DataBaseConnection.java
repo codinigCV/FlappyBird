@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBaseConnection {
-    static String url = "jdbc:mysql://localhost:3306/brid_record?&useSSL=false&serverTimezone=UTC";//定义数据连接字符串
+    static String url = "jdbc:mysql://localhost:3305/bird_record?&useSSL=false&serverTimezone=UTC";//定义数据连接字符串
     static String username = "root";//定义数据库连接用户名
     static String password = "123456";//定义数据库连接用密码
     static {

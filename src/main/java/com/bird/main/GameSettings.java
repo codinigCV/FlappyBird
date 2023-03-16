@@ -154,8 +154,8 @@ public class GameSettings {
         CR.setLayout(null);
         JLabel label=new JLabel("背景颜色",JLabel.CENTER);
         CR.getContentPane().setBackground(new Color(0x4b4cf));
-        JButton j1=new JButton("天空蓝");
-        JButton j2=new JButton("深空黑");
+        JButton j1=new JButton("深空黑");
+        JButton j2=new JButton("天空蓝");
         JButton j3=new JButton("雾霾绿");
         JButton j4=new JButton("国旗红");
         JButton j5=new JButton("小麦黄");

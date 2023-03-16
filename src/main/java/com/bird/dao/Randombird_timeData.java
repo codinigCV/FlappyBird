@@ -15,7 +15,7 @@ public class Randombird_timeData {
                 pstmt.addBatch();//加入批处理等待执行
             }
             pstmt.executeBatch();//批量执行sql语句
-            System.out.println("数据批量生成完成！");
+            System.out.println("数据批量生成完成了！");
         } catch (Exception e) {
             e.printStackTrace();
         }

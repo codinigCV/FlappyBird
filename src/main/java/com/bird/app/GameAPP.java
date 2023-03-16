@@ -10,5 +10,4 @@ public class GameAPP {
     public static void main(String[] args) {
         new ChooseLevel().init();
     }
-
 }                                

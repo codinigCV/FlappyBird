@@ -10,8 +10,7 @@ import java.util.List;
 public class TestOne {
     @Test
     public void test(){
-        System.out.println(1);
-//        new ChooseLevel().init();
+        new ChooseLevel().init();
         List all = new BTService().findAll();
         for (Object o : all) {
             System.out.println(o.getClass().getTypeName());

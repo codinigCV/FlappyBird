@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import static com.bird.util.Constant.*;
 
-public class GameFrameAlter2 extends Frame {
+public class    GameFrameAlter2 extends Frame {
     private GamebackGround gamebackGround;
     //实例化Bird类
     private Bird bird;
